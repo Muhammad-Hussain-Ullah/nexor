@@ -62,8 +62,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-xs text-slate-400">
               <li className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-teal-400 shrink-0" />
-                <a href="mailto:dispatch@nexorvoice.com" className="hover:text-white transition-colors">dispatch@nexorvoice.com</a>
-              </li>
+<a href="mailto:nexortooolz@gmail.com" className="hover:text-white transition-colors">nexortooolz@gmail.com</a>              </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-teal-400 shrink-0" />
                 <a href="tel:+18884926396" className="hover:text-white transition-colors">(888) 492-6396</a>

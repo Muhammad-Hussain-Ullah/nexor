@@ -73,9 +73,9 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <span className="text-xs text-slate-400 block">Direct Inquiries</span>
-                    <a href="mailto:dispatch@nexorvoice.com" className="font-medium text-white hover:text-teal-300 transition-colors">
-                      dispatch@nexorvoice.com
-                    </a>
+                    <a href="mailto:nexortooolz@gmail.com" className="font-medium text-white hover:text-teal-300 transition-colors">
+  nexortooolz@gmail.com
+</a>
                   </div>
                 </div>
 

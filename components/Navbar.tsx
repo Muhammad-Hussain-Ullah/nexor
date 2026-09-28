@@ -1,7 +1,7 @@
 'use client';
-
+import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
-import { PhoneCall, Menu, X, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Menu, X, ArrowRight, ShieldCheck } from 'lucide-react';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,17 +18,14 @@ export default function Navbar() {
       if (currentScrollY <= 60) {
         setVisible(true);
       } else if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-        // Scrolling down -> hide header unless cursor is hovering the top
         setVisible(false);
       } else if (currentScrollY < lastScrollY.current) {
-        // Scrolling up -> reveal header
         setVisible(true);
       }
       lastScrollY.current = currentScrollY;
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      // Hovering around the top 75px of the viewport reveals the header
       if (e.clientY <= 75) {
         setIsHoveredTop(true);
       } else if (e.clientY > 90 && !mobileMenuOpen) {
@@ -57,7 +54,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Invisible top hover zone trigger */}
       <div
         onMouseEnter={() => setIsHoveredTop(true)}
         className="fixed top-0 left-0 right-0 h-4 z-40 pointer-events-auto"
@@ -79,21 +75,22 @@ export default function Navbar() {
             : 'bg-[#0c1013]/85 backdrop-blur-sm border-b border-white/[0.04]'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-18">
-            {/* Brand */}
-            <a href="#home" className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 rounded-lg p-1">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-teal-500/20 to-emerald-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 group-hover:border-teal-400 transition-colors shadow-sm">
-                <PhoneCall className="w-4 h-4 text-teal-300" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-xl tracking-tight text-[#f1f5f9] group-hover:text-white transition-colors">
-                  Nexor
-                </span>
-                <span className="text-[10px] text-teal-400/90 font-medium tracking-wide uppercase">
-                  AI Voice Dispatch
-                </span>
-              </div>
+        {/* CHANGED: Replaced px-4 sm:px-6 lg:px-8 with pl-0 pr-4 sm:pr-6 lg:pr-8 to clear left outer spacing */}
+        <div className="max-w-7xl mx-auto pl-0 pr-4 sm:pr-6 lg:pr-8">
+          <div className="flex items-center justify-between h-20">
+            {/* BRAND: Removed ml-4 sm:ml-8, removed inner padding, and increased height */}
+            <a 
+              href="#home" 
+              className="flex items-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 rounded-lg p-0 m-0"
+            >
+              <Image
+                src="/images/images.png"
+                alt="Nexor"
+                width={300}
+                height={120}
+                priority
+                className="h-12 sm:h-16 md:h-20 w-auto object-contain block"
+              />
             </a>
 
             {/* Desktop Nav */}
@@ -180,8 +177,7 @@ export default function Navbar() {
           </div>
         )}
       </header>
-      {/* Spacer to prevent layout shift with fixed header */}
-      <div className="h-18" aria-hidden="true" />
+      <div className="h-20" aria-hidden="true" />
     </>
   );
 }
